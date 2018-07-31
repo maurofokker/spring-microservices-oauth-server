@@ -125,3 +125,8 @@
     ```
     * `access_token`: is accepted by the resource server due to the relationship with authorization server within the authentication scheme
 
+* Protect API endpoints with spring security `method security annotations`
+  * add `@EnableGlobalMethodSecurity` annotation using the `prePostEnabled` set to true
+  * add `@PreAuthorize("hasRole('ADMIN')")` method annotation to discerning who is able to invoke this method in the expression
+    the user needs to have the ADMIN role to access this method
+ 
