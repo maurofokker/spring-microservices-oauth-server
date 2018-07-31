@@ -83,6 +83,11 @@
   * a request agains the authorization server is made to get an access token `"1355ede7-3a32-43df-9fb0-75883bab0636"` 
     and that access token can be used to gain access to resources that are protected by the security architecture
 
+  * reference:
+    * [secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration](https://medium.com/@nydiarra/secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration-e57a25806c50)
+    * [spring security doc](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#getting-started)
+    * [oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store](https://medium.com/@akourtim.ahmed/oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store-8dbc063bd5d4)
+    
 ## Config Resource Server
 
 * is the underlaying API server that is used to access user information 
@@ -129,4 +134,13 @@
   * add `@EnableGlobalMethodSecurity` annotation using the `prePostEnabled` set to true
   * add `@PreAuthorize("hasRole('ADMIN')")` method annotation to discerning who is able to invoke this method in the expression
     the user needs to have the ADMIN role to access this method
+    ```java
+      @RequestMapping("/resource/endpoint")
+      @PreAuthorize("hasRole('ADMIN')")
+      public String endpoint() {
+          return "resource protected by the resource server";
+      }
+    ```
+  * to test this configuration create an access token for user `admin` and then access to the annotated method
+    if token is created with user `user` then resource server will not grant access
  
