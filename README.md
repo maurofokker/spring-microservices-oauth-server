@@ -143,4 +143,7 @@
     ```
   * to test this configuration create an access token for user `admin` and then access to the annotated method
     if token is created with user `user` then resource server will not grant access
- 
+
+## Oauth client
+
+* Demo can be found [here](https://github.com/maurofokker/spring-microservices-oauth-client) 
