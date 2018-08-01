@@ -144,6 +144,34 @@
   * to test this configuration create an access token for user `admin` and then access to the annotated method
     if token is created with user `user` then resource server will not grant access
 
+## Token management with JDBC
+
+* database will store information about tokens that were issued by the authorization server 
+* resource server will use the database to confirm the tokens received are valid and were issued by the authorization server
+* this test is with an `HSQLDB`
+  * download hsqldb
+  * create `server.properties` in root directory of hsqldb
+    ```properties
+      server.database.0=file:hsqldb/poc
+      server.dbname.0=testdb
+      server.port=9137
+    ```
+  * build server from root directory of hsqldb
+    ```
+      $java -classpath lib/hsqldb.jar org.hsqldb.server.Server
+    ```
+  * start server
+    ```
+      $java -classpath lib/hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/poc --dbname.0 testdb 
+    ```
+  * hsqldb GUI can be found in `bin/runManagerSwing`
+    * select `type: hsql database engine server` and user port defined in `server.properties`
+* configure schema in spring boot creating `src/main/resources/schema.sql`
+  * `schema.sql` is a special spring boot file name because it will pick the file and load any scripts within the file into 
+    the jdbc store (hsqldb) prior to starting the application
+    * copy schema from [spring-security-oauth2 github repository](https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql)
+    * insert client details
+    
 ## Oauth client
 
 * Demo can be found [here](https://github.com/maurofokker/spring-microservices-oauth-client) 
