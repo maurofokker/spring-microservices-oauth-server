@@ -178,7 +178,7 @@
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9136/testdb");
+        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9137/testdb");
         dataSource.setUsername("SA");
         dataSource.setPassword("");
         return dataSource;
