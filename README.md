@@ -171,7 +171,27 @@
     the jdbc store (hsqldb) prior to starting the application
     * copy schema from [spring-security-oauth2 github repository](https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql)
     * insert client details
-    
+* add `configure(AuthorizationServerSecurityConfigurer security)` in `AuthorizationServerConfig` file
+* set the data source bean for the hsqldb server
+  ```java
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+        dataSource.setUrl("jdbc:hsqldb:hsql://localhost:9136/testdb");
+        dataSource.setUsername("SA");
+        dataSource.setPassword("");
+        return dataSource;
+    }
+  ```    
+* create a `TokenStore` object of type `JdbcTokenStore` injecting the data source bean
+* edit body of `configure(ClientDetailsServiceConfigurer clients)` method
+  ```java
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.jdbc(dataSource()); // to allow to connect to db and retrieve clients 
+    }
+  ```
 ## Oauth client
 
 * Demo can be found [here](https://github.com/maurofokker/spring-microservices-oauth-client) 
