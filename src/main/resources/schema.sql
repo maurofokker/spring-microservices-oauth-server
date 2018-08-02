@@ -1,4 +1,5 @@
 -- used in tests that use HSQL
+drop table if exists oauth_client_details;
 create table IF NOT EXISTS oauth_client_details (
   client_id VARCHAR(256) PRIMARY KEY,
   resource_ids VARCHAR(256),
@@ -13,6 +14,7 @@ create table IF NOT EXISTS oauth_client_details (
   autoapprove VARCHAR(256)
 );
 
+drop table if exists oauth_client_token;
 create table IF NOT EXISTS oauth_client_token (
   token_id VARCHAR(256),
   token LONGVARBINARY,
@@ -21,6 +23,7 @@ create table IF NOT EXISTS oauth_client_token (
   client_id VARCHAR(256)
 );
 
+drop table if exists oauth_access_token;
 create table IF NOT EXISTS oauth_access_token (
   token_id VARCHAR(256),
   token LONGVARBINARY,
@@ -31,16 +34,19 @@ create table IF NOT EXISTS oauth_access_token (
   refresh_token VARCHAR(256)
 );
 
+drop table if exists oauth_refresh_token;
 create table IF NOT EXISTS oauth_refresh_token (
   token_id VARCHAR(256),
   token LONGVARBINARY,
   authentication LONGVARBINARY
 );
 
+drop table if exists oauth_code;
 create table IF NOT EXISTS oauth_code (
   code VARCHAR(256), authentication LONGVARBINARY
 );
 
+drop table if exists oauth_approvals;
 create table IF NOT EXISTS oauth_approvals (
 	userId VARCHAR(256),
 	clientId VARCHAR(256),
@@ -50,8 +56,8 @@ create table IF NOT EXISTS oauth_approvals (
 	lastModifiedAt TIMESTAMP
 );
 
-
 -- customized oauth_client_details table
+drop table if exists ClientDetails;
 create table IF NOT EXISTS ClientDetails (
   appId VARCHAR(256) PRIMARY KEY,
   resourceIds VARCHAR(256),
