@@ -1,7 +1,10 @@
 # Spring Microservice Oauth authorization server
 
 * part of [microservices demo](https://github.com/maurofokker/microservices-demo)
-
+* use with:
+  * [spring-microservices-oauth-resource](https://github.com/maurofokker/spring-microservices-oauth-resource)
+  * [spring-microservices-oauth-client](https://github.com/maurofokker/spring-microservices-oauth-client)
+  
 * token management within oauth protected app
 * capabilities:
   * create token
@@ -91,6 +94,7 @@
     
 ## Config Resource Server
 
+* _NOTE_ resource server is implemented separated from authorization server [here](https://github.com/maurofokker/spring-microservices-oauth-resource)
 * is the underlaying API server that is used to access user information 
 * using a token from the authorization server allow to obtain acces to protected resources located in the rest API 
   
