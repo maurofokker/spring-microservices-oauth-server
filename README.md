@@ -87,6 +87,7 @@
     * [secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration](https://medium.com/@nydiarra/secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration-e57a25806c50)
     * [spring security doc](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#getting-started)
     * [oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store](https://medium.com/@akourtim.ahmed/oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store-8dbc063bd5d4)
+    * [spring-boot-and-oauth2-with-jdbc](https://dazito.com/java/spring-boot-and-oauth2-with-jdbc)
     
 ## Config Resource Server
 
@@ -192,6 +193,11 @@
         clients.jdbc(dataSource()); // to allow to connect to db and retrieve clients 
     }
   ```
+  
+* reference:
+  * [oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store](https://medium.com/@akourtim.ahmed/oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store-8dbc063bd5d4)
+  * [spring-boot-and-oauth2-with-jdbc](https://dazito.com/java/spring-boot-and-oauth2-with-jdbc)
+    
 ## Oauth client
 
 * Demo can be found [here](https://github.com/maurofokker/spring-microservices-oauth-client) 

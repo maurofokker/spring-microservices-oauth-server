@@ -25,7 +25,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .authenticationManager(authenticationManager);
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore()); // persist tokens in the db
     }
 
     @Override
@@ -35,7 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // allow that tokens to be delivered from the token access point and to tokens be validated at this point
+        // allow tokens to be delivered from the token access point as well to be validated at this point
         security.checkTokenAccess("permitAll()");  // allow anyone can use this method by supplying a security expression permitAll()
     }
 
